@@ -1,8 +1,8 @@
 {
-  "name": "handsontable",
+  "name": "vue-template",
+  "version": "14.0.0",
   "private": true,
-  "description": "Handsontable is a JavaScript Spreadsheet Component available for React, Angular and Vue.",
-  "homepage": "https://handsontable.com/",
+  "homepage": "https://handsontable.com/.",
   "repository": {
     "type": "git",
     "url": "https://github.com/handsontable/handsontable.git"
@@ -12,76 +12,53 @@
   },
   "author": "Handsoncode <hello@handsontable.com>",
   "scripts": {
-    "in": "cross-env-shell COMMAND_ENV=in node scripts/translate-to-native-npm.mjs",
-    "all": "cross-env-shell COMMAND_ENV=all node scripts/translate-to-native-npm.mjs",
-    "clean:node_modules": "node ./scripts/clean-node-modules.mjs",
-    "lint": "npm run eslint && npm run all lint -- --if-present",
-    "eslint": "eslint .github/scripts/ bin/changelog scripts/",
-    "test": "npm run all test -- -e=examples",
-    "build": "npm run all build -- -e=examples",
-    "build:codesandbox": "node scripts/codesandbox-ci.mjs",
-    "freeze": "node scripts/freeze.mjs",
-    "release": "node scripts/release.mjs",
-    "changelog": "bin/changelog",
-    "publish-all": "npm run all publish-package -- -e=examples",
-    "prein": "npm run swap-package-links",
-    "preall": "npm run swap-package-links",
-    "pre-release": "node scripts/pre-release.mjs && npm run all build -- -e=examples visual-tests && npm run publish-all --tag next",
-    "swap-package-links": "node ./scripts/swap-package-links.mjs handsontable",
-    "examples:version": "node examples/scripts/code-examples.mjs version",
-    "examples:install": "node examples/scripts/code-examples.mjs install",
-    "examples:build": "node examples/scripts/code-examples.mjs build",
-    "examples:test": "node examples/scripts/code-examples.mjs test",
-    "examples:start": "http-server ./examples/tmp"
+    "start": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test": "node spec/support/jasmine.config.js"
+  },
+  "dependencies": {
+    "@handsontable/vue": "14.0.0",
+    "@handsontable/vue3": "^14.0.0",
+    "core-js": "3.9.1",
+    "handsontable": "^14.0.0",
+    "vue": "2.7.14"
   },
   "devDependencies": {
-    "@actions/core": "^1.2.6",
-    "@actions/github": "^4.0.0",
-    "@babel/cli": "^7.8.3",
-    "@babel/core": "^7.11.4",
-    "@babel/eslint-parser": "^7.13.14",
-    "@babel/eslint-plugin": "^7.13.16",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
-    "@babel/plugin-syntax-import-assertions": "^7.16.7",
-    "@babel/plugin-transform-runtime": "^7.11.0",
-    "@babel/polyfill": "^7.8.3",
-    "@babel/preset-env": "^7.11.0",
-    "@babel/register": "^7.8.3",
-    "@babel/runtime": "^7.11.2",
-    "@babel/types": "^7.12.12",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "^11.0.0-beta.2",
-    "babel-plugin-forbidden-imports": "^0.1.2",
-    "babel-plugin-transform-inline-environment-variables": "^0.4.3",
-    "babel-plugin-transform-require-ignore": "^0.1.1",
-    "chalk": "^4.1.2",
-    "cross-env": "^7.0.3",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsdoc": "^32.3.3",
-    "execa": "^5.0.0",
-    "fs-extra": "^4.0.2",
-    "global-jsdom": "^8.7.0",
-    "inquirer": "^7.3.3",
-    "moment": "2.29.4",
-    "replace-in-file": "^6.1.0",
-    "rimraf": "^3.0.2",
-    "semver": "^5.7.1",
-    "yargs": "^16.2.0"
-  },
-  "overrides": {
-    "@types/babel__traverse": "7.18.2"
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "@vue/cli-plugin-eslint": "5.0.8",
+    "@vue/cli-plugin-typescript": "5.0.8",
+    "@vue/cli-service": "5.0.8",
+    "babel-eslint": "10.1.0",
+    "eslint": "^7.5.0",
+    "eslint-plugin-vue": "^7.5.0",
+    "jasmine": "3.7.0",
+    "jasmine-console-reporter": "3.1.0",
+    "puppeteer": "14.3.0",
+    "sass": "1.68.0",
+    "sass-loader": "13.3.2",
+    "ts-loader": "8.4.0",
+    "typescript": "4.9.5",
+    "vue-template-compiler": "2.7.14"
   },
   "license": "SEE LICENSE IN LICENSE.txt",
-  "resolutions": {
-    "babel-core": "7.0.0-bridge.0"
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "@typescript-eslint/parser"
+    }
   },
-  "workspaces": [
-    "handsontable",
-    "wrappers/*",
-    "visual-tests",
-    "examples"
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
   ]
 }

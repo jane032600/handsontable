@@ -1,3 +1,0 @@
-# This `.dockerignore` file created for the purpose of building the Documentation
-/
-!/.vuepress/dist/
